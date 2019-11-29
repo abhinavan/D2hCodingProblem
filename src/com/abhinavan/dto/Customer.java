@@ -9,6 +9,10 @@ public class Customer {
 	private String email;
 	private String phoneNumber;
 	
+	public Customer() {
+		this.balance=100.00;
+	}
+	
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -25,7 +29,7 @@ public class Customer {
 		return balance;
 	}
 	public void setBalance(Double balance) {
-		this.balance = balance;
+		this.balance+= balance;
 	}
 	public boolean isSubscribed() {
 		return isSubscribed;

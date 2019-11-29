@@ -2,9 +2,17 @@ package com.abhinavan.service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Scanner;
+
+import com.abhinavan.dto.*;
+
 
 public class D2HService {
 
+	private Scanner scanner;
+	public D2HService() {
+		scanner=new Scanner(System.in);
+	}
 	/*
 	 * 1. View current balance in the account 2. Recharge Account 3. View available
 	 * packs, channels and services 4. Subscribe to base packs 5. Add channels to an
@@ -17,8 +25,17 @@ public class D2HService {
 	 * 
 	 * 
 	 */
+	
+	public 	Double rechargeAccount(Customer customer) {
+		System.out.println("Enter the amount to recharge");
+		customer.setBalance(scanner.nextDouble());
+		return customer.getBalance();
+	}
+	
+	
+	
 	public static void main(String[] args) {
-
+		D2HService service =new D2HService();
 		System.out.println(" ****************This is D2H Portal ***********************");
 		System.out.println("1. View current balance in the account \n 2. Recharge Account "
 				+ "\n 3. View available packs, channels and services"
@@ -27,15 +44,15 @@ public class D2HService {
 				+ "\n 8. Update email and phone number for notifications \n 9. Exit");
 		System.out.println(" ******************* Choose your option *********************");
 		try {
-			BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-			int choice=reader.read();
-			
-			switch(choice) {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			int choice = Integer.parseInt(reader.readLine());
+			Customer customer=new Customer();
+			switch (choice) {
 			case 1:
-				System.out.println("First");
+				System.out.println("Current balance is "+customer.getBalance()+" Rs");
 				break;
 			case 2:
-				System.out.println("Second");
+				System.out.println("Recharge completed successfully . Current balance is "+service.rechargeAccount(customer));
 				break;
 			case 3:
 				System.out.println("Third");
@@ -60,6 +77,7 @@ public class D2HService {
 			default:
 				System.out.println("No action");
 			}
+
 		} catch (Exception e) {
 		} finally {
 		}
